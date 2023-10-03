@@ -10,15 +10,17 @@
                 cursor.children[0].children[1].style.height = `${rect.height}px`;
                 cursor.children[0].children[1].style.borderRadius = "8px";
                 cursor.children[0].children[1].style.border = "3px solid rgb(79 70 229 / 0.7)";
+                cursor.children[0].children[0].style.background = "rgb(79 70 229)";
                 coords1.set({ x: (rect.x + cursor.children[0].children[1].clientWidth/2)+3, y: (rect.y + cursor.children[0].children[1].clientHeight/2)+3 });
                 coords2.set({ x: e.clientX, y: e.clientY });
             } else {
                 cursor.children[0].children[1].style.width = `40px`;
                 cursor.children[0].children[1].style.height = `40px`;
                 cursor.children[0].children[1].style.border = "1px solid white";
+                cursor.children[0].children[0].style.background = "white";
+                cursor.children[0].children[1].style.borderRadius = "1000px";
                 coords1.set({ x: e.clientX, y: e.clientY });
                 coords2.set({ x: e.clientX, y: e.clientY });
-                cursor.children[0].children[1].style.borderRadius = "1000px";
             }
         }
         document.onmouseenter = () => cursor.style.opacity = `1`;
@@ -35,8 +37,8 @@
         let card = cardContainer.children[i];
         let ball = card.children[0];
         ball.style.opacity = "1";
-        ball.style.top = `${Math.floor(Math.random() * (card.clientWidth - ball.clientHeight))}px`;
-        ball.style.left = `${Math.floor(Math.random() * (card.clientWidth - ball.clientWidth))}px`;
+        ball.style.top = `${Math.floor(Math.random() * (card.clientHeight - ball.clientHeight - 20)) + 10}px`;
+        ball.style.left = `${Math.floor(Math.random() * (card.clientWidth - ball.clientWidth - 20)) + 10}px`;
         let duration = Math.floor(Math.random() * (4_000 - 1_000) + 1_000);
         ball.style.transitionDuration = `${duration}ms`;
         setTimeout(() => {setBallPos(i)}, duration);
@@ -114,10 +116,10 @@
 <div bind:this={cursor} class="w-full h-full z-50 transition-all fixed pointer-events-none">
     <div class="relative h-full w-full pointer-events-none">
         <!-- Point circle -->
-        <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" style="top: {$coords2.y}px; left: {$coords2.x}px; height: 5px; width: 5px;">
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-colors" style="top: {$coords2.y}px; left: {$coords2.x}px; height: 5px; width: 5px;">
         </div>
 
-        <div class="absolute -translate-x-1/2 -translate-y-1/2" style="width: 30px; height: 30px; top: {$coords1.y}px; left: {$coords1.x}px; border-radius: 1000px; border: 1px solid white;"></div>
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 transition-colors" style="width: 30px; height: 30px; top: {$coords1.y}px; left: {$coords1.x}px; border-radius: 1000px; border: 1px solid white;"></div>
         <!-- <svg class="w-full h-full absolute">
             <circle cx={$coords1.x} cy={$coords1.y} r={$size} stroke="white" stroke-width="1" fill-opacity="0"/>
         </svg> -->
