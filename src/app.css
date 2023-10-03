@@ -32,7 +32,7 @@ body {
 }
 
 .button {
-  @apply inline-flex justify-center items-center rounded-lg bg-transparent backdrop-blur border border-[rgba(255,255,255,0.089)] hover:ring-2 hover:ring-indigo-600/70 hover:text-indigo-500 transition-all px-3 py-1.5 text-sm font-medium text-[rgb(197,197,197)];
+  @apply inline-flex justify-center items-center rounded-lg bg-transparent backdrop-blur border border-[rgba(255,255,255,0.089)] hover:text-indigo-500 transition-all px-3 py-1.5 text-sm font-medium text-[rgb(197,197,197)];
 }
 
 .button > svg {

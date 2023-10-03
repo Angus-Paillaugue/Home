@@ -4,15 +4,43 @@
 
     onMount(() => {
         document.onmousemove = (e) => {
-            coords1.set({ x: e.clientX, y: e.clientY });
-            coords2.set({ x: e.clientX, y: e.clientY });
-            if(e.target.closest("a")) size.set(20); else size.set(10);
+            if(e.target.closest("a")) {
+                let rect = e.target.closest("a").getBoundingClientRect();
+                cursor.children[0].children[1].style.width = `${rect.width}px`;
+                cursor.children[0].children[1].style.height = `${rect.height}px`;
+                cursor.children[0].children[1].style.borderRadius = "8px";
+                cursor.children[0].children[1].style.border = "3px solid rgb(79 70 229 / 0.7)";
+                coords1.set({ x: (rect.x + cursor.children[0].children[1].clientWidth/2)+3, y: (rect.y + cursor.children[0].children[1].clientHeight/2)+3 });
+                coords2.set({ x: e.clientX, y: e.clientY });
+            } else {
+                cursor.children[0].children[1].style.width = `40px`;
+                cursor.children[0].children[1].style.height = `40px`;
+                cursor.children[0].children[1].style.border = "1px solid white";
+                coords1.set({ x: e.clientX, y: e.clientY });
+                coords2.set({ x: e.clientX, y: e.clientY });
+                cursor.children[0].children[1].style.borderRadius = "1000px";
+            }
         }
         document.onmouseenter = () => cursor.style.opacity = `1`;
         document.onmouseleave = () => cursor.style.opacity = `0`;
         document.onmousedown = () => size.set(30);
         document.onmouseup = () => size.set(10);
+
+        for(let i = 0;i< cardContainer.children.length;i++){
+            setBallPos(i);
+        }
     });
+
+    const setBallPos = (i) => {
+        let card = cardContainer.children[i];
+        let ball = card.children[0];
+        ball.style.opacity = "1";
+        ball.style.top = `${Math.floor(Math.random() * (card.clientWidth - ball.clientHeight))}px`;
+        ball.style.left = `${Math.floor(Math.random() * (card.clientWidth - ball.clientWidth))}px`;
+        let duration = Math.floor(Math.random() * (4_000 - 1_000) + 1_000);
+        ball.style.transitionDuration = `${duration}ms`;
+        setTimeout(() => {setBallPos(i)}, duration);
+    }
 
 	let coords1 = spring(
 		{ x: -10, y: -10 },
@@ -30,8 +58,8 @@
 		}
 	);
 
-	let size = spring(10);
     let cursor;
+    let cardContainer;
 
     const cards = [
         {
@@ -39,56 +67,69 @@
             body:"My portfolio",
             preview:"//angus.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/Portfolio",
-            circleClasses:"bg-[rgb(70,148,83)] right-5 top-10 group-hover:translate-y-1/2 group-hover:-translate-x-1/2"
+            circleClasses:"bg-[rgb(70,148,83)]"
         },
         {
             title:"Shop",
             body:"My shop project",
             preview:"//shop.angus.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/Shop",
-            circleClasses:"bg-[rgb(69,43,26)] right-5 bottom-10 group-hover:-translate-y-1/2 group-hover:-translate-x-1/2"
+            circleClasses:"bg-[rgb(69,43,26)]"
         },
         {
             title:"FileHub",
             body:"Transfer files",
             preview:"//filehub.angus.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/FileHub",
-            circleClasses:"bg-[rgb(134,239,172)] left-5 top-10 group-hover:translate-y-1/2 group-hover:translate-x-1/2"
+            circleClasses:"bg-[rgb(134,239,172)]"
         },
         {
             title:"Link Trim",
             body:"Shorten links",
             preview:"//linktrim.angus.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/linkTrim",
-            circleClasses:"bg-[rgb(25,154,70)] left-5 bottom-10 group-hover:-translate-y-1/2 group-hover:translate-x-1/2"
+            circleClasses:"bg-[rgb(25,154,70)]"
         },
         {
             title:"Sign It Now",
             body:"Sign petitions",
             preview:"//signitnow.angus.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/SignItNow",
-            circleClasses:"bg-[rgb(26,86,219)] left-5 top-10 group-hover:translate-y-1/2 group-hover:translate-x-1/2"
+            circleClasses:"bg-[rgb(26,86,219)]"
         },
         {
             title:"Code Chronicles",
             body:"A blog where you can learn web development",
             preview:"//blog.angus.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/Code-Chronicles",
-            circleClasses:"bg-[rgb(235,79,39)] right-5 top-10 group-hover:translate-y-1/2 group-hover:-translate-x-1/2"
+            circleClasses:"bg-[rgb(235,79,39)]"
         }
     ];
 </script>
 
-<svg bind:this={cursor} class="w-full h-full z-50 transition-all fixed pointer-events-none">
-    <circle cx={$coords1.x} cy={$coords1.y} r={$size} stroke="white" stroke-width="1" fill-opacity="0"/>
-    <circle cx={$coords2.x} cy={$coords2.y} r={$size/4} fill="white"/>
-</svg>
+<svelte:head>
+    <title>paillaugue.fr</title>
+</svelte:head>
+
+<div bind:this={cursor} class="w-full h-full z-50 transition-all fixed pointer-events-none">
+    <div class="relative h-full w-full pointer-events-none">
+        <!-- Point circle -->
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" style="top: {$coords2.y}px; left: {$coords2.x}px; height: 5px; width: 5px;">
+        </div>
+
+        <div class="absolute -translate-x-1/2 -translate-y-1/2" style="width: 30px; height: 30px; top: {$coords1.y}px; left: {$coords1.x}px; border-radius: 1000px; border: 1px solid white;"></div>
+        <!-- <svg class="w-full h-full absolute">
+            <circle cx={$coords1.x} cy={$coords1.y} r={$size} stroke="white" stroke-width="1" fill-opacity="0"/>
+        </svg> -->
+    </div>
+</div>
 
 <main class="min-h-screen flex flex-col w-full z-10">
-    <div class="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-24 grow items-center justify-center grid gap-6 lg:grid-cols-3">
+    <div class="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-24 grow items-center justify-center grid gap-6 lg:grid-cols-3 relative" bind:this={cardContainer}>
         {#each cards as card}
             <div class="relative group h-full w-full">
-                <span class="w-1/2 aspect-square absolute {card.circleClasses} rounded-full transition-all duration-1000"></span>
+                <div class="absolute h-20 w-20 rounded-full {card.circleClasses}" style="opacity: 0; transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 1s;"></div>
+                <!-- <span class="w-1/2 aspect-square absolute blob {card.circleClasses} transition-all duration-1000"></span> -->
                 <div class="bg-[rgba(65,65,65,0.308)] border border-[rgba(255,255,255,0.089)] relative w-full h-full flex flex-col justify-between items-center py-5 px-3 rounded-lg backdrop-blur-[30px]">
                     <img src="https://cruip-tutorials.vercel.app/spotlight-effect/card-01.png" width="200" height="200" alt="Card 01" />
                     <div class="grow mb-5 w-full text-center px-10">
