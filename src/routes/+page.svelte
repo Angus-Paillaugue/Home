@@ -25,8 +25,6 @@
         }
         document.onmouseenter = () => cursor.style.opacity = `1`;
         document.onmouseleave = () => cursor.style.opacity = `0`;
-        document.onmousedown = () => size.set(30);
-        document.onmouseup = () => size.set(10);
 
         for(let i = 0;i< cardContainer.children.length;i++){
             setBallPos(i);
@@ -116,13 +114,10 @@
 <div bind:this={cursor} class="w-full h-full z-50 transition-all fixed pointer-events-none">
     <div class="relative h-full w-full pointer-events-none">
         <!-- Point circle -->
-        <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-colors" style="top: {$coords2.y}px; left: {$coords2.x}px; height: 5px; width: 5px;">
-        </div>
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-colors" style="top: {$coords2.y}px; left: {$coords2.x}px; height: 5px; width: 5px;"></div>
 
+        <!-- Outside circle -->
         <div class="absolute -translate-x-1/2 -translate-y-1/2 transition-colors" style="width: 30px; height: 30px; top: {$coords1.y}px; left: {$coords1.x}px; border-radius: 1000px; border: 1px solid white;"></div>
-        <!-- <svg class="w-full h-full absolute">
-            <circle cx={$coords1.x} cy={$coords1.y} r={$size} stroke="white" stroke-width="1" fill-opacity="0"/>
-        </svg> -->
     </div>
 </div>
 
