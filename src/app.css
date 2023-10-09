@@ -22,6 +22,9 @@
 
 * {
   scroll-behavior: smooth;
+  -webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 * {
   @apply cursor-none;
