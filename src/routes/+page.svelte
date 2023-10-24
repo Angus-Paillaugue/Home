@@ -111,7 +111,7 @@
     <title>paillaugue.fr</title>
 </svelte:head>
 
-<div bind:this={cursor} class="w-full h-full z-50 transition-all fixed pointer-events-none md:hidden">
+<div bind:this={cursor} class="w-full h-full z-50 transition-all fixed pointer-events-none max-md:hidden">
     <div class="relative h-full w-full pointer-events-none">
         <!-- Point circle -->
         <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-colors" style="top: {$coords2.y}px; left: {$coords2.x}px; height: 5px; width: 5px;"></div>
