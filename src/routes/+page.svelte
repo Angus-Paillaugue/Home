@@ -124,7 +124,7 @@
     <div class="grow w-full">
         <div class="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-24 grow items-center justify-center grid gap-6 lg:grid-cols-3 relative" bind:this={cardContainer}>
             {#each cards as card}
-                <div class="relative group w-full">
+                <div class="relative group w-full h-full">
                     <div class="absolute h-20 w-20 rounded-full {card.circleClasses}" style="opacity: 0; transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 1s;"></div>
                     <!-- <span class="w-1/2 aspect-square absolute blob {card.circleClasses} transition-all duration-1000"></span> -->
                     <div class="bg-[rgba(65,65,65,0.308)] border border-[rgba(255,255,255,0.089)] relative w-full h-full flex flex-col justify-between items-center py-5 px-3 rounded-lg backdrop-blur-[30px]">
