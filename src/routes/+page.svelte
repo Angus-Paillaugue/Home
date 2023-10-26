@@ -77,11 +77,10 @@
             circleClasses:"bg-[rgb(69,43,26)]"
         },
         {
-            title:"FileHub",
-            body:"Transfer files",
-            preview:"//filehub.angus.paillaugue.fr",
-            code:"//github.com/Angus-Paillaugue/FileHub",
-            circleClasses:"bg-[rgb(134,239,172)]"
+            title:"PCC",
+            body:"This chrome extension is used to convert currencies on a webpage.",
+            preview:"//pcc.paillaugue.fr/",
+            circleClasses:"bg-[rgb(13,168,88)]"
         },
         {
             title:"Link Trim",
