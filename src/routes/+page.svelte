@@ -72,7 +72,7 @@
         {
             title:"Shop",
             body:"My shop project",
-            preview:"//shop.angus.paillaugue.fr",
+            preview:"//shop.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/Shop",
             circleClasses:"bg-[rgb(69,43,26)]"
         },
@@ -85,21 +85,21 @@
         {
             title:"Link Trim",
             body:"Shorten links",
-            preview:"//linktrim.angus.paillaugue.fr",
+            preview:"//linktrim.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/linkTrim",
             circleClasses:"bg-[rgb(25,154,70)]"
         },
         {
             title:"Sign It Now",
             body:"Sign petitions",
-            preview:"//signitnow.angus.paillaugue.fr",
+            preview:"//signitnow.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/SignItNow",
             circleClasses:"bg-[rgb(26,86,219)]"
         },
         {
             title:"Code Chronicles",
             body:"A blog where you can learn web development",
-            preview:"//blog.angus.paillaugue.fr",
+            preview:"//blog.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/Code-Chronicles",
             circleClasses:"bg-[rgb(235,79,39)]"
         }
