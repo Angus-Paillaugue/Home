@@ -73,6 +73,7 @@
             title:"PCC",
             body:"This chrome extension is used to convert currencies on a webpage.",
             preview:"//pcc.paillaugue.fr/",
+            code:"//github.com/Angus-Paillaugue/PCC",
             circleClasses:"bg-[rgb(13,168,88)]"
         },
         {
