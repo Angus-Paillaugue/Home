@@ -70,17 +70,24 @@
             circleClasses:"bg-[rgb(70,148,83)]"
         },
         {
+            title:"PCC",
+            body:"This chrome extension is used to convert currencies on a webpage.",
+            preview:"//pcc.paillaugue.fr/",
+            circleClasses:"bg-[rgb(13,168,88)]"
+        },
+        {
+            title:"Code Chronicles",
+            body:"A blog where you can learn web development",
+            preview:"//blog.paillaugue.fr",
+            code:"//github.com/Angus-Paillaugue/Code-Chronicles",
+            circleClasses:"bg-[rgb(235,79,39)]"
+        },
+        {
             title:"Shop",
             body:"My shop project",
             preview:"//shop.paillaugue.fr",
             code:"//github.com/Angus-Paillaugue/Shop",
             circleClasses:"bg-[rgb(69,43,26)]"
-        },
-        {
-            title:"PCC",
-            body:"This chrome extension is used to convert currencies on a webpage.",
-            preview:"//pcc.paillaugue.fr/",
-            circleClasses:"bg-[rgb(13,168,88)]"
         },
         {
             title:"Link Trim",
@@ -96,13 +103,6 @@
             code:"//github.com/Angus-Paillaugue/SignItNow",
             circleClasses:"bg-[rgb(26,86,219)]"
         },
-        {
-            title:"Code Chronicles",
-            body:"A blog where you can learn web development",
-            preview:"//blog.paillaugue.fr",
-            code:"//github.com/Angus-Paillaugue/Code-Chronicles",
-            circleClasses:"bg-[rgb(235,79,39)]"
-        }
     ];
 </script>
 
